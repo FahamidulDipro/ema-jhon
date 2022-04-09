@@ -1,4 +1,23 @@
 .cart {
   position: sticky;
   top: 0;
+  padding: 20px;
+  background-color: #ffe0b3;
+  border-radius: 20px;
+}
+.clear-cart-btn {
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+.clear-cart-btn:hover {
+  color: red;
 }

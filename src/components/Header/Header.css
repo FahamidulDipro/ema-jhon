@@ -2,6 +2,11 @@
   background-color: #1c2b35 !important;
   display: flex;
   justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10000;
 }
 .listContainer {
   list-style: none;
@@ -19,4 +24,10 @@
 }
 .listContainer li a:hover {
   color: #ff9900;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo-img {
+    width: 100px;
+  }
 }

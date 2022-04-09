@@ -1,0 +1,42 @@
+.cartItem-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+  text-align: left;
+  border: 2px solid grey;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 90%;
+}
+.text-container {
+  margin: 0 20px 0 20px;
+  flex: 3;
+}
+.text-container p,
+h4 {
+  margin: 0;
+}
+
+img {
+  height: 100px;
+  border-radius: 20px;
+}
+span {
+  color: orange;
+  font-weight: bold;
+}
+.delete-icon {
+  color: red;
+  transition: 0.3s ease;
+}
+.delete-icon:hover {
+  color: orange;
+}
+.delete-container button {
+  border: none;
+  padding: 5px;
+  background-color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
