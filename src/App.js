@@ -8,6 +8,7 @@ import Order from './components/Order/Order';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Route path='/' element={<Home></Home>}></Route>
       <Route path='/home' element={<Home></Home>}></Route>
       <Route path='/shop' element={<Shop></Shop>}></Route>
-      <Route path='/inventory' element={<Inventory></Inventory>}></Route>
+      <Route path='/inventory' element={<RequireAuth><Inventory></Inventory></RequireAuth>}></Route>
       <Route path='/order' element={<Order></Order>}></Route>
        <Route path='/login' element={<Login></Login>}></Route>
        <Route path='/signup' element={<Signup></Signup>}></Route>
