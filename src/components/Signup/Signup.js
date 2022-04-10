@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+
 import './Signup.css';
+ 
+import auth from '../firebase.init';
 const Signup = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [cpassword,setCPassword] = useState('');
     const [error,setError] = useState('');
+    const [createUserWithEmailAndPassword,user,errorHook] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate();
 
     const handleEmailBLur = (e)=>{
         setEmail(e.target.value);
@@ -18,6 +24,25 @@ const Signup = () => {
     const handleCPassBLur = (e)=>{
         setCPassword(e.target.value);
         console.log(cpassword);
+        
+    }
+    const handleCreateUser = e=>{
+        e.preventDefault();
+        if(password !== cpassword){
+            setError('Password didnot match');
+            return;
+        }
+        if(password.length < 6){
+            setError('Password should be minimum 6 characters');
+            return;
+        }
+        createUserWithEmailAndPassword(email,password);
+        alert('User Created!')
+     
+    }
+
+    if(user){
+        navigate('/login');
     }
 
     return (
@@ -25,7 +50,7 @@ const Signup = () => {
              <section>
       <div className="login-container">
         <h1 className="login-heading">Signup</h1>
-        <form>
+        <form onSubmit={handleCreateUser}>
           <div className="input-group">
           
             <label htmlFor="email">Email</label>
@@ -39,6 +64,9 @@ const Signup = () => {
             <label htmlFor="cpassword">Confirm Password</label>
             <br />
             <input type="password" placeholder="Confirm password" required onBlur={handleCPassBLur}/>
+            <p style={{color:'red'}}>{error }</p>
+            <p style={{color:'red'}}>{errorHook.message }</p>
+         
             <br />
             <input type="submit" value="Register" className="login-btn" />
           </div>
